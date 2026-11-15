@@ -636,5 +636,12 @@
     "prezentare": true,
     "_prezentare": "true = coșul apare pe site, dar comanda nu pleacă: clientul e rugat să sune. Pune false când Fabi urmărește panou.html."
   },
-  "eticheteIlustrative": false
+  "eticheteIlustrative": false,
+  "tema": {
+    "_nota": "Tema locului: stil și script încărcate peste stilul de bază. Gol = tema maro a șablonului.",
+    "css": "assets/css/tema-fabi.css",
+    "js": "assets/js/tema-fabi.js",
+    "culoare": "#fbe9ef",
+    "schema": "only light"
+  }
 }

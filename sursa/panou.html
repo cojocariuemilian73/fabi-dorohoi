@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Comenzi — {{brand}}</title>
-  <meta name="theme-color" content="#1F1612">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="{{themeColor}}">
+  <meta name="color-scheme" content="{{colorScheme}}">
   <link rel="icon" href="{{favicon}}" type="image/png" sizes="64x64">
   <link rel="stylesheet" href="assets/css/style.css?v={{vCss}}">
   <link rel="stylesheet" href="assets/css/comenzi.css?v={{vOrderCss}}">
+  {{themeHead}}
   <style>
     body { min-height: 100vh; background: var(--paper); }
     .panou-wrap { padding: 20px clamp(16px, 3vw, 32px) 40px; }

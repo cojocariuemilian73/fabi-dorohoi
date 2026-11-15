@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{title}}</title>
   <meta name="description" content="{{description}}">
-  <meta name="theme-color" content="#1F1612">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="{{themeColor}}">
+  <meta name="color-scheme" content="{{colorScheme}}">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ro_RO">
   <meta property="og:title" content="{{title}}">
@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="assets/css/style.css?v={{vCss}}">
   {{extraHead}}
   {{orderHead}}
+  {{themeHead}}
   <script type="application/ld+json">{{schema}}</script>
   <script id="program-dorohoi" type="application/json">{{schedule}}</script>
   <script defer src="assets/js/main.js?v={{vJs}}" data-motion="assets/js/motion.js?v={{vMotion}}"></script>

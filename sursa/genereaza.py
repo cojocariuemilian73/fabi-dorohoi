@@ -370,8 +370,24 @@ profiles = [links[key] for key in ("instagram", "facebook") if links.get(key)]
 if profiles:
     main_shop["sameAs"] = profiles
 
+THEME = DATA.get("tema") or {}
+
+
+def theme_head():
+    """Tema locului (culori, decor): un stil și, opțional, un script, încărcate după celelalte."""
+    out = ""
+    if THEME.get("css"):
+        out += f'<link rel="stylesheet" href="{THEME["css"]}?v={hashlib.sha1((ROOT / THEME["css"]).read_bytes()).hexdigest()[:8]}">'
+    if THEME.get("js"):
+        out += f'<script defer src="{THEME["js"]}?v={hashlib.sha1((ROOT / THEME["js"]).read_bytes()).hexdigest()[:8]}"></script>'
+    return out
+
+
 nav = (("meniu", "Meniu"), ("atelier", "Poveste"), ("locatii", "Locații"), ("contact", "Contact"))
 values = {
+    "themeHead": theme_head(),
+    "themeColor": THEME.get("culoare", "#1F1612"),
+    "colorScheme": THEME.get("schema", "dark"),
     "title": esc(TEXT["titluPagina"]),
     "logo": logo(),
     "logoShort": esc(TEXT["logo"]["mare"]),
