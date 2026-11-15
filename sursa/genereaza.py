@@ -508,6 +508,7 @@ def order_config():
         "tel": ("tel:" + re.sub(r"[^\d+]", "", place["telefon"])) if place.get("telefon") else "",
         "supabaseUrl": ORDERS.get("supabaseUrl", ""),
         "supabaseCheie": ORDERS.get("supabaseCheie", ""),
+        "prezentare": ORDERS.get("prezentare", False),
     })
 
 
@@ -546,8 +547,11 @@ live = with_extras(values, DATA["extra"]["activ"])
 page = re.sub(r"\{\{(\w+)\}\}", lambda match: str(live[match[1]]), template)
 (ROOT / "index.html").write_text(page, encoding="utf-8", newline="\n")
 # Varianta de prezentare pentru patron, cu toate propunerile (neindexată, fără link de pe site).
-demo = with_extras(values, True, demo=True)
-(ROOT / "demo.html").write_text(re.sub(r"\{\{(\w+)\}\}", lambda match: str(demo[match[1]]), template), encoding="utf-8", newline="\n")
+if DATA["extra"]["activ"] and ORDERS.get("activ"):
+    (ROOT / "demo.html").unlink(missing_ok=True)  # totul e pe site; nu mai e nevoie de varianta separată
+else:
+    demo = with_extras(values, True, demo=True)
+    (ROOT / "demo.html").write_text(re.sub(r"\{\{(\w+)\}\}", lambda match: str(demo[match[1]]), template), encoding="utf-8", newline="\n")
 
 # --- Meniul pentru mese (meniu.html), deschis din codul QR de pe cartonaș ---
 def qr_item(product):

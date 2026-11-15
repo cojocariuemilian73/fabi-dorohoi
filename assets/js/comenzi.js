@@ -194,14 +194,27 @@
       el("p", { class: "cart-meta", text: (mode === "masa" ? "Plătești la masă." : "Plătești la primire, cash sau card.") + (eta && state.open ? ` Gata în aproximativ ${eta} de minute de la confirmare.` : "") }),
       message ? el("p", { class: "order-error", role: "alert", text: message }) : null,
       el("button", { class: "button button-dark cart-send", disabled: Boolean(short) }, `Trimite comanda · ${lei(sub + fee)}`),
-      !live ? el("p", { class: "order-note", text: "Mod demonstrație: comanda nu pleacă la local. O vezi în panou.html, în acest browser." }) : null,
+      !live && !C.prezentare ? el("p", { class: "order-note", text: "Mod demonstrație: comanda nu pleacă la local. O vezi în panou.html, în acest browser." }) : null,
     );
     form.addEventListener("submit", (e) => { e.preventDefault(); send(form, { sub, fee, state }); });
     drawer.replaceChildren(el("div", { class: "cart-body" }, head, lines, modeSwitch, form));
   }
 
   /* ---------- Trimiterea ---------- */
+  // Mod prezentare: coșul merge, dar comanda nu pleacă; clientul e trimis la telefon.
+  function showSoon(total) {
+    drawer.replaceChildren(el("div", { class: "cart-body" },
+      el("div", { class: "sheet-head" },
+        el("h2", { id: "cart-title", text: "Comenzile online pornesc în curând" }),
+        el("button", { type: "button", class: "close-button", "aria-label": "Închide", onclick: () => drawer.close(), text: "×" })),
+      el("p", { class: "cart-meta", text: `Până atunci, sună-ne și spune ce ai ales${C.telefon ? " la " + C.telefon : ""}. Coșul tău (${lei(total)}) rămâne salvat.` }),
+      C.tel ? el("a", { class: "button button-dark", href: C.tel }, "Sună acum") : null,
+      el("button", { type: "button", class: "button button-outline", onclick: () => renderCart() }, "Înapoi la coș"),
+    ));
+  }
+
   async function send(form, { sub, fee, state }) {
+    if (C.prezentare) return showSoon(sub + fee);
     const data = Object.fromEntries(new FormData(form));
     const phone = (data.telefon || "").replace(/[\s.-]/g, "");
     if (mode !== "masa") {

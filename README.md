@@ -24,7 +24,8 @@ Pozele sunt în `assets/img/fabi/`.
 5. Adresa finală. Acum e propusă `https://cojocariuemilian73.github.io/fabi-dorohoi/`. Dacă se schimbă, actualizezi `publicUrl` și rulezi `python sursa/qr.py`, apoi `genereaza.py`.
 
 ## Comenzi online
-- Coșul (mărimi, extra, meniu, ridicare / livrare / la masă, comandă din nou) e acum doar pe `demo.html`. Pentru masă: `demo.html?masa=5`.
+- Coșul (mărimi, extra, meniu, ridicare / livrare / la masă, comandă din nou) e pe site și pe `meniu.html`. Pentru masă: `meniu.html?masa=5`.
+- `comenzi.prezentare: true` = comanda nu pleacă, clientul e rugat să sune. Pune `false` când Fabi urmărește `panou.html` (Supabase e deja legat).
 - Panoul pentru local: `panou.html` (tableta de la bar, cu sunet la comandă nouă). Butoane: Accept 15/20/30 min, Refuz, E gata, Predată. Clientul vede starea pe telefon.
 - Fără Supabase rulează în mod demonstrație: comanda rămâne în browser și se vede în panou doar pe același dispozitiv.
 - Datele sunt în `date-site.json` → `comenzi`. Prețurile pentru mărimi, extra și meniu sunt EXEMPLE (`exemple: true`) până le confirmă Fabi.

@@ -545,7 +545,7 @@
   "_sursaMeniu": "Transcris din fotografia meniului de pe Google Maps (august 2026). Prețurile, cafeaua și băuturile trebuie confirmate de local; apoi meniuExemplu=false.",
   "comenzi": {
     "_nota": "Comenzi online. 'activ': false = coșul apare doar pe demo.html. Cu 'activ': true apare și pe index.html și meniu.html. Prețurile din 'grupuri' sunt EXEMPLE până le confirmă localul ('exemple': false după confirmare).",
-    "activ": false,
+    "activ": true,
     "exemple": true,
     "supabaseUrl": "https://smvsftefsffdpqnhcrjf.supabase.co",
     "supabaseCheie": "sb_publishable_1EG6ZYM96nJJedQ6F_MMqw_8IE2Zp2l",
@@ -632,7 +632,9 @@
       "turte": [
         "extra"
       ]
-    }
+    },
+    "prezentare": true,
+    "_prezentare": "true = coșul apare pe site, dar comanda nu pleacă: clientul e rugat să sune. Pune false când Fabi urmărește panou.html."
   },
   "eticheteIlustrative": false
 }
