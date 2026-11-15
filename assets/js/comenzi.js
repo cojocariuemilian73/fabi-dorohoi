@@ -286,7 +286,7 @@
     async call(fn, body) {
       const r = await fetch(C.supabaseUrl.replace(/\/$/, "") + "/rest/v1/rpc/" + fn, {
         method: "POST",
-        headers: { "Content-Type": "application/json", apikey: C.supabaseCheie, Authorization: "Bearer " + C.supabaseCheie },
+        headers: { "Content-Type": "application/json", apikey: C.supabaseCheie, ...(C.supabaseCheie.startsWith("eyJ") ? { Authorization: "Bearer " + C.supabaseCheie } : {}) },
         body: JSON.stringify(body),
       });
       if (!r.ok) throw new Error(await r.text());

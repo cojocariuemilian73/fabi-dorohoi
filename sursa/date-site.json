@@ -547,8 +547,8 @@
     "_nota": "Comenzi online. 'activ': false = coșul apare doar pe demo.html. Cu 'activ': true apare și pe index.html și meniu.html. Prețurile din 'grupuri' sunt EXEMPLE până le confirmă localul ('exemple': false după confirmare).",
     "activ": false,
     "exemple": true,
-    "supabaseUrl": "",
-    "supabaseCheie": "",
+    "supabaseUrl": "https://smvsftefsffdpqnhcrjf.supabase.co",
+    "supabaseCheie": "sb_publishable_1EG6ZYM96nJJedQ6F_MMqw_8IE2Zp2l",
     "_supabase": "Gol = mod demonstrație: comenzile rămân în browser și se văd în panou.html din același browser. Cheia e cea publică (anon), niciodată service_role.",
     "ridicare": {
       "minute": 20
