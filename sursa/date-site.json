@@ -1,0 +1,546 @@
+{
+  "_instructiuni": [
+    "Câmpurile goale (\"\") nu apar pe site. Completează-le și rulează: python sursa/genereaza.py",
+    "Meniu: adaugă produse în lista \"produse\" a unei categorii: {\"nume\": \"...\", \"descriere\": \"...\", \"pret\": 0, \"imagine\": \"cheie din imagini\"}. \"imagine\" e opțională; fără ea, cardul arată numele scris frumos. \"pret\": null afișează «La cerere», \"preferat\": true pune «Preferata casei».",
+    "Meniu: o categorie nouă are 'id' (fără spații/diacritice), 'nume', 'imagine' (o cheie din 'imagini') și 'produse'. Apare automat ca filă nouă.",
+    "Când meniul e confirmat, pune 'meniuExemplu': false.",
+    "Locații: prima e cea principală. Pentru o locație nouă completează 'telefon', 'program', 'latitudine' și 'longitudine'.",
+    "Contact: 'whatsapp' = numărul în format internațional (ex. 40756764805), 'email', 'instagram' = linkul profilului.",
+    "Recenzii: fiecare are {\"autor\": \"...\", \"stele\": 5, \"text\": \"textul exact\"} și, opțional, \"url\" spre recenzia originală. Pune câte vrei; se derulează spre dreapta.",
+    "Filtre meniu: lista 'filtre' = [cheie, text]. Fiecare produs are \"etichete\" cu cheile filtrelor. \"Preferata casei\" vine din \"preferat\": true."
+  ],
+  "brand": "Fabi food&coffee",
+  "description": "Fabi food&coffee, pizzerie și cafenea pe Aleea Cristalului 11 din Dorohoi. Pizza, burgeri, crispy, shaorma și turte, zilnic între 07:00 și 22:00.",
+  "publicUrl": "https://cojocariuemilian73.github.io/fabi-dorohoi/",
+  "atelier": "",
+  "deschidere": "",
+  "linkuri": {
+    "recenzii": "https://www.google.com/maps/place/Fabi+food%26coffee/@47.9513847,26.3954609,17z/data=!4m8!3m7!1s0x47346100569d38d7:0xdb48406d93192806!8m2!3d47.9513847!4d26.3954609!9m1!1b1!16s%2Fg%2F11zgs9h2j1",
+    "harta": "https://www.google.com/maps?cid=15800950131992897542&output=embed&hl=ro",
+    "instagram": "",
+    "facebook": "",
+    "email": "",
+    "whatsapp": "",
+    "scrieRecenzie": "https://search.google.com/local/writereview?placeid=ChIJ1zidVgBhNEcRBigZk21ASNs"
+  },
+  "video": {
+    "youtube": "",
+    "titlu": "",
+    "credit": ""
+  },
+  "meniuExemplu": true,
+  "meniu": [
+    {
+      "id": "pizza",
+      "nume": "Pizza",
+      "produse": [
+        {
+          "nume": "Pizza Margherita",
+          "descriere": "Mozzarella, sos de roșii și busuioc.",
+          "pret": 28,
+          "etichete": [
+            "fara-carne"
+          ],
+          "preferat": true,
+          "imagine": "pizza"
+        },
+        {
+          "nume": "Pizza Capriciosa",
+          "descriere": "Șuncă, mozzarella, ciuperci, măsline și sos de roșii.",
+          "pret": 33,
+          "etichete": []
+        },
+        {
+          "nume": "Quattro Formaggi",
+          "descriere": "Mozzarella, parmezan, gorgonzola și emmentaler.",
+          "pret": 33,
+          "etichete": [
+            "fara-carne"
+          ]
+        },
+        {
+          "nume": "Quattro Stagioni",
+          "descriere": "Mozzarella, salam, șuncă, ciuperci, măsline și sos de roșii.",
+          "pret": 33,
+          "etichete": []
+        },
+        {
+          "nume": "Pizza cu ton",
+          "descriere": "Ton, ceapă și sos de roșii.",
+          "pret": 33,
+          "etichete": []
+        },
+        {
+          "nume": "Pizza Diavola",
+          "descriere": "Salam picant, mozzarella și sos de roșii.",
+          "pret": 33,
+          "etichete": [
+            "picant"
+          ]
+        },
+        {
+          "nume": "Prosciutto Crudo",
+          "descriere": "Șuncă, mozzarella, parmezan, rucola și sos de roșii.",
+          "pret": 33,
+          "etichete": []
+        },
+        {
+          "nume": "Pizza Hawai",
+          "descriere": "Ananas, șuncă, mozzarella și sos de roșii.",
+          "pret": 33,
+          "etichete": []
+        },
+        {
+          "nume": "Fabi Deluxe",
+          "descriere": "Mozzarella, salam, șuncă, cârnăciori, bacon, ciuperci, măsline și porumb.",
+          "pret": 35,
+          "etichete": []
+        },
+        {
+          "nume": "Pizza vegetariană",
+          "descriere": "Mozzarella, ciuperci, ardei, măsline, porumb și sos de roșii.",
+          "pret": 33,
+          "etichete": [
+            "fara-carne"
+          ]
+        },
+        {
+          "nume": "Pizza cu piept de pui",
+          "descriere": "Piept de pui, mozzarella și sos de roșii.",
+          "pret": 33,
+          "etichete": [],
+          "preferat": true
+        }
+      ],
+      "imagine": "pizza"
+    },
+    {
+      "id": "burgeri",
+      "nume": "Burgeri",
+      "produse": [
+        {
+          "nume": "Royal Burger",
+          "descriere": "Burger de vită servit cu cartofi și sos.",
+          "pret": 30,
+          "etichete": []
+        },
+        {
+          "nume": "Burger pui",
+          "descriere": "Pui, cheddar, salată și roșii. Servit cu cartofi și sos.",
+          "pret": 18,
+          "etichete": [],
+          "imagine": "burger"
+        },
+        {
+          "nume": "Burger în cheddar",
+          "descriere": "Carne de vită, cheddar, cartofi și sos.",
+          "pret": 40,
+          "etichete": [],
+          "preferat": true
+        }
+      ],
+      "imagine": "burger"
+    },
+    {
+      "id": "preparate",
+      "nume": "Preparate calde",
+      "produse": [
+        {
+          "nume": "Șnițel XXL",
+          "descriere": "Șnițel de pui cu salată de varză, cartofi și sos.",
+          "pret": 30,
+          "etichete": []
+        },
+        {
+          "nume": "Shaorma",
+          "descriere": "Shaorma în lipie, cu cartofi și sos.",
+          "pret": 30,
+          "etichete": []
+        },
+        {
+          "nume": "Shaorma la farfurie",
+          "descriere": "Carne de pui cu cartofi, salată, sos și chiflă.",
+          "pret": 35,
+          "etichete": []
+        },
+        {
+          "nume": "Crispy de pui",
+          "descriere": "Crispy de pui cu cartofi și sos.",
+          "pret": 29,
+          "etichete": [],
+          "imagine": "crispy"
+        }
+      ],
+      "imagine": "crispy"
+    },
+    {
+      "id": "turte",
+      "nume": "Turte",
+      "produse": [
+        {
+          "nume": "Turtă cu șuncă",
+          "descriere": "Cu mozzarella și șuncă.",
+          "pret": 15,
+          "etichete": []
+        },
+        {
+          "nume": "Turtă cu pui",
+          "descriere": "Cu mozzarella și piept de pui.",
+          "pret": 15,
+          "etichete": []
+        }
+      ],
+      "imagine": "pizza"
+    }
+  ],
+  "evaluareGoogle": {
+    "scor": "4,8",
+    "numar": 78
+  },
+  "recenzii": [
+    {
+      "autor": "Vlad D.",
+      "stele": 5,
+      "text": "Mâncare foarte gustoasă, proaspătă și bine pregătită! Porțiile sunt generoase, ingredientele de calitate, iar gustul este exact ce trebuie. Totul a fost delicios și cu siguranță voi reveni cu drag. Recomand cu încredere!"
+    },
+    {
+      "autor": "Răzvan Z.",
+      "stele": 5,
+      "text": "Mâncarea foarte gustoasă, servirea rapidă și elegantă, foarte primitoare și prietenoasă locația, recomand cu toată încrederea și prețurile foarte corecte și cinstite, calitatea e mult peste alte locații!"
+    },
+    {
+      "autor": "Denis A.",
+      "stele": 5,
+      "text": "Este un loc bun pentru copii, deoarece fix în fața localului este un parc unde copiii se pot juca. În rest, mâncarea foarte bună, prețuri bune, iar mâncarea vine repede. Recomand cu încredere!"
+    },
+    {
+      "autor": "Iasmina S.",
+      "stele": 5,
+      "text": "Cel mai bun local din Dorohoi fără îndoială, prețuri minunate, produse de calitate, un personal minunat, cu siguranță voi reveni, de 70 de lei au mâncat 4 persoane pe săturate, 100% recomand"
+    },
+    {
+      "autor": "Ștefan",
+      "stele": 5,
+      "text": "Pot spune că de când am intrat a fost o atmosferă foarte primitoare, mâncarea a fost la fel de bună, servirea a fost rapidă și angajații foarte amabili. Recomand cu încredere!"
+    },
+    {
+      "autor": "Petronela M.",
+      "stele": 5,
+      "text": "Am fost pentru prima dată la Fabi Food & Coffee și chiar am rămas plăcut surprinsă. Mâncarea a fost foarte bună, porțiile generoase, iar servirea rapidă."
+    },
+    {
+      "autor": "Damaris M.",
+      "stele": 5,
+      "text": "Am comandat pizza family crispy și pizza cu piept de pui, a fost foarte bună, o pizza de calitate și cu un gust aparte. Recomand cu încredere!"
+    },
+    {
+      "autor": "Mihai P.",
+      "stele": 5,
+      "text": "O locație superbă. Peste așteptări. Dorohoi chiar merita un loc ca acesta, cu mâncare bună și la un preț accesibil pentru toată lumea."
+    },
+    {
+      "autor": "Andrei D.",
+      "stele": 5,
+      "text": "Mâncarea foarte bună, atmosfera primitoare și foarte curat totul. Cu siguranță mai venim să încercăm și celelalte tipuri de mâncare."
+    },
+    {
+      "autor": "Adina A.",
+      "stele": 5,
+      "text": "Este un loc curat, primitor și cu gust, mâncarea este delicioasă și angajații sunt foarte amabili. Recomand cu încredere!"
+    },
+    {
+      "autor": "Cretzu",
+      "stele": 5,
+      "text": "Un loc superb, cu atmosferă plăcută și mâncare bună. Cele mai bune prețuri din orașul Dorohoi, calitate, cantitate."
+    },
+    {
+      "autor": "Robert D.",
+      "stele": 5,
+      "text": "Pizza a fost foarte bună, mai ales cea margherita. Personalul a fost amabil și înțelegător."
+    },
+    {
+      "autor": "Monalisa B.",
+      "stele": 5,
+      "text": "Am încercat pizza și burgerul cu cheddar, ambele foarte bune. Recomand cu drag!"
+    },
+    {
+      "autor": "Cristina Z.",
+      "stele": 5,
+      "text": "Mâncarea extraordinară, personalul gentil, locația de 10+"
+    },
+    {
+      "autor": "Evelina D.",
+      "stele": 5,
+      "text": "Foarte bun! Am mâncat burger cheddar și a fost delicios."
+    },
+    {
+      "autor": "Rebeca R.",
+      "stele": 5,
+      "text": "Mâncarea și personalul sunt pur și simplu la alt nivel!"
+    },
+    {
+      "autor": "Ioan C.",
+      "stele": 5,
+      "text": "Cea mai bună pizza din Dorohoi, foarte bună!"
+    },
+    {
+      "autor": "Delia G.",
+      "stele": 5,
+      "text": "Bun, ieftin și rapid!"
+    }
+  ],
+  "fotografiiIlustrative": true,
+  "surseFoto": [
+    {
+      "nume": "Pizza – Jules Clark (Pexels)",
+      "url": "https://www.pexels.com/photo/delicious-homemade-margherita-pizza-on-plate-35555214/"
+    },
+    {
+      "nume": "Burger – Matthew Baxter (Pexels)",
+      "url": "https://www.pexels.com/photo/delicious-burger-and-fries-on-wooden-table-36071504/"
+    },
+    {
+      "nume": "Crispy – Valeria Boltneva (Pexels)",
+      "url": "https://www.pexels.com/photo/crispy-fried-chicken-tenders-with-dipping-sauce-29653191/"
+    }
+  ],
+  "imagini": {
+    "hero": {
+      "fisier": "fabi-coperta.webp",
+      "latime": 1536,
+      "inaltime": 864,
+      "alt": "Pizza, burger cu cartofi și cappuccino pe o masă",
+      "titlu": "Pizza, burger și cafea",
+      "mobil": "fabi-coperta-mobil.webp",
+      "latimeMobil": 660,
+      "inaltimeMobil": 870,
+      "ilustrativa": true
+    },
+    "share": {
+      "fisier": "fabi-distribuire.jpg",
+      "latime": 1200,
+      "inaltime": 630,
+      "alt": "Pizza, burger și cappuccino la Fabi food&coffee, Dorohoi",
+      "ilustrativa": true
+    },
+    "pizza": {
+      "fisier": "fabi-pizza.webp",
+      "latime": 900,
+      "inaltime": 600,
+      "alt": "Pizza Margherita cu busuioc",
+      "titlu": "Pizza Margherita",
+      "ilustrativa": true
+    },
+    "burger": {
+      "fisier": "fabi-burger.webp",
+      "latime": 900,
+      "inaltime": 1064,
+      "alt": "Burger de pui cu cartofi prăjiți",
+      "titlu": "Burger pui",
+      "ilustrativa": true
+    },
+    "crispy": {
+      "fisier": "fabi-crispy.webp",
+      "latime": 900,
+      "inaltime": 1349,
+      "alt": "Crispy de pui cu sos",
+      "titlu": "Crispy de pui",
+      "ilustrativa": true
+    },
+    "cafea": {
+      "fisier": "fabi-cafea.webp",
+      "latime": 512,
+      "inaltime": 512,
+      "alt": "Cappuccino cu croissant",
+      "titlu": "Cafea",
+      "ilustrativa": true
+    }
+  },
+  "extra": {
+    "_nota": "Propuneri pentru patron. Ofertele (voucher, roată) NU sunt aprobate de Fabi; se confirmă înainte de publicare.",
+    "activ": true,
+    "specialitati": {
+      "titlu": "Specialitățile casei",
+      "text": "Trei lucruri pe care clienții le laudă în recenzii.",
+      "produse": [
+        "Pizza Margherita",
+        "Burger pui",
+        "Crispy de pui"
+      ],
+      "imagini": {},
+      "tente": {
+        "Pizza Margherita": "#c8402e",
+        "Burger pui": "#d9a24e",
+        "Crispy de pui": "#c98a3c"
+      },
+      "ingrediente": {
+        "Pizza Margherita": [
+          "frunza",
+          "rosie",
+          "cascaval",
+          "frunza",
+          "rosie",
+          "cascaval"
+        ],
+        "Burger pui": [
+          "cascaval",
+          "frunza",
+          "rosie",
+          "firimitura",
+          "cascaval",
+          "frunza"
+        ],
+        "Crispy de pui": [
+          "firimitura",
+          "firimitura",
+          "cascaval",
+          "firimitura",
+          "firimitura",
+          "firimitura"
+        ]
+      },
+      "povesti": {
+        "Pizza Margherita": {
+          "eticheta": "Clasica",
+          "text": "Mozzarella, sos de roșii și busuioc. Cea mai simplă pizza din meniu și una dintre cele mai lăudate în recenzii."
+        },
+        "Burger pui": {
+          "eticheta": "Rapid și sățios",
+          "text": "Pui, cheddar, salată și roșii, servit cu cartofi și sos. Bun pentru o pauză de prânz scurtă."
+        },
+        "Crispy de pui": {
+          "eticheta": "Crocant",
+          "text": "Crispy de pui cu cartofi și sos. Merge la fel de bine în local sau la pachet."
+        }
+      }
+    },
+    "voucher": {
+      "titlu": "Prima cafea e din partea casei.",
+      "text": "Lasă-ne adresa de e-mail. Îți trimitem un cod de confirmare, iar după ce îl introduci primești voucherul pe telefon.",
+      "acord": "Sunt de acord să primesc e-mailuri de la Fabi food&coffee. Mă pot dezabona oricând.",
+      "conditii": "Un voucher pe adresă de e-mail, la prima vizită. Valabil 30 de zile.",
+      "imagine": "cafea"
+    },
+    "roata": {
+      "titlu": "Încearcă-ți norocul.",
+      "text": "O învârtire pe zi. Premiul e valabil doar azi, până la miezul nopții.",
+      "premii": [
+        {
+          "nume": "Cafea din partea casei",
+          "scurt": "Cafea"
+        },
+        {
+          "nume": "10% reducere",
+          "scurt": "−10%"
+        },
+        {
+          "nume": "Sos extra gratuit",
+          "scurt": "Sos extra"
+        },
+        {
+          "nume": "5% reducere",
+          "scurt": "−5%"
+        },
+        {
+          "nume": "Turtă la jumătate de preț",
+          "scurt": "Turtă ½"
+        },
+        {
+          "nume": "15% reducere",
+          "scurt": "−15%"
+        }
+      ],
+      "valabilitate": "Valabil doar azi, până la ora 24:00."
+    },
+    "email": {
+      "_nota": "Serviciul care trimite codul pe e-mail (Supabase, gratuit). Gol = mod demonstrație: codul apare pe ecran.",
+      "supabaseUrl": "",
+      "supabaseCheie": ""
+    }
+  },
+  "locatii": [
+    {
+      "oras": "Dorohoi",
+      "adresa": "Aleea Cristalului 11",
+      "judet": "Botoșani",
+      "reper": "Vizavi de parc",
+      "telefon": "+40 773 765 797",
+      "latitudine": 47.9513847,
+      "longitudine": 26.3954609,
+      "cautareHarta": "Fabi food&coffee, Aleea Cristalului 11, Dorohoi",
+      "program": [
+        {
+          "zile": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "deschide": "07:00",
+          "inchide": "22:00"
+        }
+      ]
+    }
+  ],
+  "texte": {
+    "_nota": "Toate textele vizibile ale site-ului. „|” = rând nou în titlu. Cuvintele cu cratimă nu se rup singure.",
+    "titluPagina": "Fabi food&coffee — Pizzerie și cafenea în Dorohoi",
+    "logo": {
+      "mare": "Fabi",
+      "mic": "food&coffee"
+    },
+    "hero": "Pizza, burgeri și cafea, la prețuri corecte.",
+    "poveste": {
+      "titlu": "",
+      "lead": "",
+      "text": "",
+      "imagineMare": "pizza",
+      "imagineMica": "burger",
+      "imagineTrei": "",
+      "cuvinteCheie": []
+    },
+    "galerie": {
+      "titlu": "Porții mari,|prețuri mici.",
+      "text": "Pe Aleea Cristalului, vizavi de parc: pizza, burgeri, crispy și shaorma, de la 7 dimineața până la 10 seara. Vii cu copiii, iar cât aștepți comanda ei se joacă în parc.",
+      "imagini": [
+        "pizza",
+        "burger",
+        "crispy"
+      ]
+    },
+    "meniu": "Meniu",
+    "recenzii": "Ce spun clienții.",
+    "locatii": "Ne vedem la Fabi.",
+    "subsol": "Pizza, burgeri și cafea în Dorohoi.",
+    "paginaMeniu": {
+      "titlu": "Meniu — Fabi food&coffee Dorohoi",
+      "descriere": "Meniul Fabi food&coffee din Dorohoi: pizza, burgeri, preparate calde și turte.",
+      "linkPoveste": "Despre Fabi",
+      "imagine": "pizza"
+    },
+    "heroCuvinteAurii": [
+      "Pizza",
+      "burgeri",
+      "cafea"
+    ]
+  },
+  "folderImagini": "assets/img/fabi/",
+  "filtre": [
+    [
+      "fara-carne",
+      "Fără carne"
+    ],
+    [
+      "picant",
+      "Picant"
+    ],
+    [
+      "preferat",
+      "Preferata casei"
+    ]
+  ],
+  "_sursaMeniu": "Transcris din fotografia meniului de pe Google Maps (august 2026). Prețurile, cafeaua și băuturile trebuie confirmate de local; apoi meniuExemplu=false."
+}
