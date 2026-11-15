@@ -131,7 +131,8 @@ def gallery_tile(key, index):
     item = DATA["imagini"][key]
     caption = item["titlu"]
     if DATA["fotografiiIlustrative"]:
-        caption += " · Imagine ilustrativă"
+        if DATA.get("eticheteIlustrative", True):
+            caption += " · Imagine ilustrativă"
     return (
         f'<a class="gallery-item g{index} image-frame depth" href="{esc(IMG + item["fisier"])}" '
         f'data-caption="{esc(caption)}" aria-label="Mărește imaginea. {esc(caption)}">'
@@ -428,7 +429,7 @@ values = {
     "tel": "tel:" + re.sub(r"[^\d+]", "", dorohoi["telefon"]),
     "scheduleLabelD": esc(schedule_label(dorohoi["program"])),
     "scheduleLabelB": esc(schedule_label(botosani["program"])),
-    "heroIllustration": '<figcaption class="hero-credit">Imagine ilustrativă</figcaption>' if illustrative else "",
+    "heroIllustration": '<figcaption class="hero-credit">Imagine ilustrativă</figcaption>' if illustrative and DATA.get("eticheteIlustrative", True) else "",
     "arrowDown": arrow("M12 4v15m-6-6 6 6 6-6"),
     "arrowOut": arrow("M6 18 18 6M7 6h11v11"),
     "menuNotice": "",

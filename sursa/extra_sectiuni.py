@@ -35,7 +35,7 @@ def build(data, esc, image, frame):
         illustration = ""
         if key in data["imagini"]:
             photo = f'<div class="special-photo">{image(key, sizes="(min-width: 900px) 46vw, 80vw")}</div>'
-            if data["imagini"][key].get("ilustrativa"):
+            if data["imagini"][key].get("ilustrativa") and data.get("eticheteIlustrative", True):
                 illustration = '<small class="special-caption">Imagine ilustrativă</small>'
         else:
             photo = f'<div class="special-photo is-type" aria-hidden="true"><span>{esc(product["nume"])}</span></div>'
