@@ -610,3 +610,6 @@ html.has-window .wood-pin.is-dragging { cursor: grabbing; }
 
 /* Fără scrisuri mici de indicații („Glisează”, „Sau apasă direct pe roată”). */
 .ww-nav, .wheel-hint { display: none; }
+
+/* Galeria are z-index-uri mari în interior; le ținem în secțiune, ca bara de sus să rămână deasupra. */
+.wood-pin, .wood { isolation: isolate; }
