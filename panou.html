@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Comenzi — Fabi food&amp;coffee</title>
+  <meta name="theme-color" content="#1F1612">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="assets/img/fabi/favicon.png" type="image/png" sizes="64x64">
+  <link rel="stylesheet" href="assets/css/style.css?v=79722fa7">
+  <link rel="stylesheet" href="assets/css/comenzi.css?v=02a798f9">
+  <style>
+    body { min-height: 100vh; background: var(--paper); }
+    .panou-wrap { padding: 20px clamp(16px, 3vw, 32px) 40px; }
+    .panou-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
+    .panou-top h1 { font: 600 var(--fs-xl)/1 var(--serif); }
+    #panou-stare { color: var(--muted); font-size: var(--fs-xs); }
+    #panou-coloane { display: grid; gap: 16px; }
+    @media (min-width: 900px) { #panou-coloane { grid-template-columns: repeat(3, 1fr); align-items: start; } }
+    .col { display: grid; gap: 12px; }
+    .col h2 { display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid var(--line); font: 600 var(--fs-lg)/1 var(--serif); }
+    .col h2 span { color: var(--accent-text); font-family: var(--sans); font-size: var(--fs-md); }
+    .col-empty { color: var(--muted); font-size: var(--fs-xs); }
+    .ticket { display: grid; gap: 8px; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: color-mix(in oklab, var(--ink) 4%, var(--paper)); font-size: var(--fs-sm); }
+    .ticket.is-noua { border-color: var(--accent-text); box-shadow: 0 0 0 1px var(--accent-text); }
+    .ticket header { display: flex; justify-content: space-between; gap: 8px; }
+    .ticket header strong { font-size: var(--fs-md); }
+    .ticket header span, .ticket-addr, .ticket-when { color: var(--muted); font-size: var(--fs-xs); }
+    .ticket-when { color: var(--accent-text); font-weight: 600; }
+    .ticket ul { display: grid; gap: 4px; padding: 0; list-style: none; }
+    .ticket li small { display: block; padding-left: 24px; color: var(--muted); font-size: var(--fs-xs); }
+    .ticket-obs { font-style: italic; }
+    .ticket-total { font-weight: 700; }
+    .ticket-total small { color: var(--muted); font-weight: 400; font-size: var(--fs-xs); }
+    .ticket-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .ticket-actions .button { flex: 1 1 auto; justify-content: center; }
+    #panou-istoric { margin-top: 32px; color: var(--muted); font-size: var(--fs-xs); }
+    #panou-istoric h2 { margin-bottom: 8px; font-size: var(--fs-sm); color: var(--ink); }
+    #panou-istoric ul { display: grid; gap: 4px; padding: 0; list-style: none; }
+    #panou-login { display: grid; gap: 16px; width: min(420px, 100%); margin: 12vh auto 0; padding: 0 16px; }
+    #panou-login h1 { font: 600 var(--fs-xl)/1 var(--serif); }
+    #panou-login[hidden], #panou[hidden], #login-campuri[hidden], #login-demo[hidden] { display: none; }
+    #login-campuri { display: grid; gap: 14px; }
+    #login-eroare { color: #e0614a; font-size: var(--fs-xs); }
+  </style>
+</head>
+<body>
+  <form id="panou-login" novalidate>
+    <a class="wordmark" href="./"><span>Fabi</span><small>food&amp;coffee</small></a>
+    <h1>Comenzi</h1>
+    <div id="login-campuri">
+      <label class="field"><span>E-mail</span><input type="email" name="email" autocomplete="username" required></label>
+      <label class="field"><span>Parolă</span><input type="password" name="parola" autocomplete="current-password" required></label>
+    </div>
+    <p id="login-demo" class="order-note">Mod demonstrație: aici apar comenzile trimise de pe <a href="demo.html">demo.html</a> din acest browser. Deschide site-ul într-un tab alăturat și trimite o comandă.</p>
+    <p id="login-eroare" role="alert"></p>
+    <button class="button button-dark">Pornește panoul (cu sunet)</button>
+  </form>
+
+  <div id="panou" class="panou-wrap" hidden>
+    <div class="panou-top">
+      <h1>Comenzi · Fabi food&amp;coffee</h1>
+      <p id="panou-stare" aria-live="polite"></p>
+      <button type="button" id="panou-iesire" class="button button-outline">Ieși</button>
+    </div>
+    <div id="panou-coloane"></div>
+    <div id="panou-istoric"></div>
+  </div>
+
+  <script id="comenzi-config" type="application/json">{"produse":{"pizza-margherita":{"nume":"Pizza Margherita","pret":28,"cat":"pizza","descriere":"Mozzarella, sos de roșii și busuioc."},"pizza-capriciosa":{"nume":"Pizza Capriciosa","pret":33,"cat":"pizza","descriere":"Șuncă, mozzarella, ciuperci, măsline și sos de roșii."},"quattro-formaggi":{"nume":"Quattro Formaggi","pret":33,"cat":"pizza","descriere":"Mozzarella, parmezan, gorgonzola și emmentaler."},"quattro-stagioni":{"nume":"Quattro Stagioni","pret":33,"cat":"pizza","descriere":"Mozzarella, salam, șuncă, ciuperci, măsline și sos de roșii."},"pizza-cu-ton":{"nume":"Pizza cu ton","pret":33,"cat":"pizza","descriere":"Ton, ceapă și sos de roșii."},"pizza-diavola":{"nume":"Pizza Diavola","pret":33,"cat":"pizza","descriere":"Salam picant, mozzarella și sos de roșii."},"prosciutto-crudo":{"nume":"Prosciutto Crudo","pret":33,"cat":"pizza","descriere":"Șuncă, mozzarella, parmezan, rucola și sos de roșii."},"pizza-hawai":{"nume":"Pizza Hawai","pret":33,"cat":"pizza","descriere":"Ananas, șuncă, mozzarella și sos de roșii."},"fabi-deluxe":{"nume":"Fabi Deluxe","pret":35,"cat":"pizza","descriere":"Mozzarella, salam, șuncă, cârnăciori, bacon, ciuperci, măsline și porumb."},"pizza-vegetariana":{"nume":"Pizza vegetariană","pret":33,"cat":"pizza","descriere":"Mozzarella, ciuperci, ardei, măsline, porumb și sos de roșii."},"pizza-cu-piept-de-pui":{"nume":"Pizza cu piept de pui","pret":33,"cat":"pizza","descriere":"Piept de pui, mozzarella și sos de roșii."},"royal-burger":{"nume":"Royal Burger","pret":30,"cat":"burgeri","descriere":"Burger de vită servit cu cartofi și sos."},"burger-pui":{"nume":"Burger pui","pret":18,"cat":"burgeri","descriere":"Pui, cheddar, salată și roșii. Servit cu cartofi și sos."},"burger-in-cheddar":{"nume":"Burger în cheddar","pret":40,"cat":"burgeri","descriere":"Carne de vită, cheddar, cartofi și sos."},"snitel-xxl":{"nume":"Șnițel XXL","pret":30,"cat":"preparate","descriere":"Șnițel de pui cu salată de varză, cartofi și sos."},"shaorma":{"nume":"Shaorma","pret":30,"cat":"preparate","descriere":"Shaorma în lipie, cu cartofi și sos."},"shaorma-la-farfurie":{"nume":"Shaorma la farfurie","pret":35,"cat":"preparate","descriere":"Carne de pui cu cartofi, salată, sos și chiflă."},"crispy-de-pui":{"nume":"Crispy de pui","pret":29,"cat":"preparate","descriere":"Crispy de pui cu cartofi și sos."},"turta-cu-sunca":{"nume":"Turtă cu șuncă","pret":15,"cat":"turte","descriere":"Cu mozzarella și șuncă."},"turta-cu-pui":{"nume":"Turtă cu pui","pret":15,"cat":"turte","descriere":"Cu mozzarella și piept de pui."}},"grupuri":{"marime":{"titlu":"Mărime","tip":"una","variante":[{"nume":"33 cm","pret":0},{"nume":"50 cm","pret":22}]},"meniu":{"titlu":"Fă-l meniu","tip":"multe","variante":[{"nume":"Suc la doză","pret":6}]},"extra":{"titlu":"Extra","tip":"multe","variante":[{"nume":"Sos extra","pret":3},{"nume":"Cașcaval extra","pret":5}]},"fara":{"titlu":"Fără","tip":"multe","variante":[{"nume":"fără ceapă","pret":0},{"nume":"fără sos","pret":0}]}},"categorii":{"pizza":["marime","extra"],"burgeri":["meniu","extra","fara"],"preparate":["meniu","extra","fara"],"turte":["extra"]},"ridicare":{"minute":20},"livrare":{"activ":true,"taxa":5,"minim":30,"minute":40,"zona":"Dorohoi"},"exemple":true,"program":[{"zile":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"deschide":"07:00","inchide":"22:00"}],"telefon":"+40 773 765 797","tel":"tel:+40773765797","supabaseUrl":"","supabaseCheie":""}</script>
+  <script src="assets/js/panou.js?v=b06ab767"></script>
+</body>
+</html>

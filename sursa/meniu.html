@@ -11,6 +11,7 @@
   <link rel="preload" href="assets/fonts/cormorant-ro.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css?v={{vCss}}">
   <link rel="stylesheet" href="assets/css/meniu.css?v={{vMenuCss}}">
+  {{orderHead}}
 </head>
 <body class="qm">
   <header class="qm-head">
@@ -49,5 +50,6 @@
       document.querySelectorAll(".qm-section").forEach((section) => seen.observe(section));
     })();
   </script>
+  {{orderScripts}}
 </body>
 </html>

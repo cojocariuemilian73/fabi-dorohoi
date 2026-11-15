@@ -204,6 +204,12 @@ def story_receipt():
     )
 
 
+def product_id(product):
+    """Identificator stabil pentru coș: din nume, fără diacritice."""
+    plain = product["nume"].lower().translate(str.maketrans("ăâîșşțţ", "aaisstt"))
+    return product.get("id") or re.sub(r"[^a-z0-9]+", "-", plain).strip("-")
+
+
 def small_src(key):
     item = DATA["imagini"][key]
     stem = item["fisier"].rsplit(".", 1)[0]
@@ -229,7 +235,7 @@ def menu_board():
             thumb = f'<span class="board-thumb" aria-hidden="true">{image(key, sizes="52px")}</span>' if has_photo else ""
             star = '<span class="board-fav">★ preferata casei</span>' if product.get("preferat") else ""
             items.append(
-                f'<li class="board-item" data-tags="{" ".join(labels)}" style="view-transition-name: produs-{n}">'
+                f'<li class="board-item" data-pid="{esc(product_id(product))}" data-tags="{" ".join(labels)}" style="view-transition-name: produs-{n}">'
                 f'<div class="board-line">{thumb}<h4>{esc(product["nume"])}</h4><span class="board-dots" aria-hidden="true"></span>'
                 f'<span class="board-price">{amount}</span></div><p>{esc(product["descriere"])}{star}</p></li>'
             )
@@ -481,6 +487,44 @@ extra_script = (
 )
 
 
+ORDERS = DATA.get("comenzi") or {}
+
+
+def order_config():
+    place = DATA["locatii"][0]
+    return js({
+        "produse": {
+            product_id(p): {"nume": p["nume"], "pret": p["pret"], "cat": c["id"], "descriere": p.get("descriere", "")}
+            for c in DATA["meniu"] for p in c["produse"]
+        },
+        "grupuri": ORDERS.get("grupuri", {}),
+        "categorii": ORDERS.get("categorii", {}),
+        "ridicare": ORDERS.get("ridicare", {}),
+        "livrare": ORDERS.get("livrare", {"activ": False}),
+        "exemple": ORDERS.get("exemple", False),
+        "program": place.get("program", []),
+        "telefon": place.get("telefon", ""),
+        "tel": ("tel:" + re.sub(r"[^\d+]", "", place["telefon"])) if place.get("telefon") else "",
+        "supabaseUrl": ORDERS.get("supabaseUrl", ""),
+        "supabaseCheie": ORDERS.get("supabaseCheie", ""),
+    })
+
+
+def version(path):
+    return hashlib.sha1((ROOT / path).read_bytes()).hexdigest()[:8]
+
+
+def order_parts(on):
+    """Coșul de comenzi: stilul în <head> și scripturile la final. Gol când comenzile sunt oprite."""
+    if not on or not ORDERS:
+        return {"orderHead": "", "orderScripts": ""}
+    return {
+        "orderHead": f'<link rel="stylesheet" href="assets/css/comenzi.css?v={version("assets/css/comenzi.css")}">',
+        "orderScripts": f'<script id="comenzi-config" type="application/json">{order_config()}</script>'
+                        f'<script defer src="assets/js/comenzi.js?v={version("assets/js/comenzi.js")}"></script>',
+    }
+
+
 def with_extras(base, on, demo=False):
     out = dict(base)
     out.update({
@@ -490,6 +534,7 @@ def with_extras(base, on, demo=False):
         "extraOffers": extras["offers"] if on else "",
         "extraScripts": extra_script if on else "",
     })
+    out.update(order_parts(ORDERS.get("activ") or demo))
     if demo:
         out["canonical"] = ""
     return out
@@ -514,12 +559,12 @@ def qr_item(product):
         thumb = f'<div class="qm-thumb is-letter" aria-hidden="true">{esc(product["nume"][0])}</div>'
     fav = '<span class="qm-fav">Preferata casei</span>' if product.get("preferat") else ""
     return (
-        f'<li class="qm-item">{thumb}<h3>{esc(product["nume"])}{fav}</h3>'
+        f'<li class="qm-item" data-pid="{esc(product_id(product))}">{thumb}<h3>{esc(product["nume"])}{fav}</h3>'
         f'<span class="price">{amount}</span><p>{esc(product["descriere"])}</p></li>'
     )
 
 
-menu_values = dict(values)
+menu_values = dict(values, **order_parts(ORDERS.get("activ")))
 menu_values.update({
     "vMenuCss": hashlib.sha1((ROOT / "assets/css/meniu.css").read_bytes()).hexdigest()[:8],
     "cover": image(TEXT["paginaMeniu"].get("imagine", "hero"), hero=True, sizes="100vw"),
@@ -532,6 +577,14 @@ menu_values.update({
 })
 menu_template = (SOURCE / "meniu.html").read_text(encoding="utf-8")
 (ROOT / "meniu.html").write_text(re.sub(r"\{\{(\w+)\}\}", lambda m: str(menu_values[m[1]]), menu_template), encoding="utf-8", newline="\n")
+
+# Panoul de comenzi pentru local (panou.html, neindexat).
+if ORDERS:
+    panel_values = dict(values, brand=esc(DATA["brand"]), favicon=IMG + "favicon.png", orderConfig=order_config(),
+                        vOrderCss=version("assets/css/comenzi.css"), vPanelJs=version("assets/js/panou.js"),
+                        demoLink='<a href="demo.html">demo.html</a>' if not ORDERS.get("activ") else '<a href="./">site</a>')
+    panel_template = (SOURCE / "panou.html").read_text(encoding="utf-8")
+    (ROOT / "panou.html").write_text(re.sub(r"\{\{(\w+)\}\}", lambda m: str(panel_values[m[1]]), panel_template), encoding="utf-8", newline="\n")
 
 # Cartonașul de masă pentru tipar (print/card-masa.html); codul QR îl face sursa/qr.py.
 qr_path = ROOT / "assets/img/qr-meniu.svg"

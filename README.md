@@ -22,3 +22,16 @@ Pozele sunt în `assets/img/fabi/`.
 3. Facebook, Instagram, WhatsApp și e-mail, dacă există.
 4. Aprobarea patronului pentru oferte: voucherul „Prima cafea e din partea casei” și premiile de la roată. Până atunci `extra.activ` se poate pune pe `false`.
 5. Adresa finală. Acum e propusă `https://cojocariuemilian73.github.io/fabi-dorohoi/`. Dacă se schimbă, actualizezi `publicUrl` și rulezi `python sursa/qr.py`, apoi `genereaza.py`.
+
+## Comenzi online
+- Coșul (mărimi, extra, meniu, ridicare / livrare / la masă, comandă din nou) e acum doar pe `demo.html`. Pentru masă: `demo.html?masa=5`.
+- Panoul pentru local: `panou.html` (tableta de la bar, cu sunet la comandă nouă). Butoane: Accept 15/20/30 min, Refuz, E gata, Predată. Clientul vede starea pe telefon.
+- Fără Supabase rulează în mod demonstrație: comanda rămâne în browser și se vede în panou doar pe același dispozitiv.
+- Datele sunt în `date-site.json` → `comenzi`. Prețurile pentru mărimi, extra și meniu sunt EXEMPLE (`exemple: true`) până le confirmă Fabi.
+
+### Pornire pe bune
+1. Cont gratuit pe supabase.com → proiect nou (regiunea Frankfurt).
+2. SQL Editor → lipește și rulează `sursa/comenzi.sql`.
+3. Authentication: oprește înscrierile noi, adaugă utilizatorul patronului (e-mail + parolă), apoi rulează linia `insert into personal …` din capul fișierului SQL.
+4. În `date-site.json` → `comenzi`: `supabaseUrl` și `supabaseCheie` (cheia publică anon/publishable, NU service_role), prețurile confirmate, `exemple: false`, `activ: true`.
+5. `python sursa/genereaza.py`, commit, push. Fă o comandă de test și verific-o în panou.

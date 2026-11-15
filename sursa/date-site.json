@@ -542,5 +542,96 @@
       "Preferata casei"
     ]
   ],
-  "_sursaMeniu": "Transcris din fotografia meniului de pe Google Maps (august 2026). Prețurile, cafeaua și băuturile trebuie confirmate de local; apoi meniuExemplu=false."
+  "_sursaMeniu": "Transcris din fotografia meniului de pe Google Maps (august 2026). Prețurile, cafeaua și băuturile trebuie confirmate de local; apoi meniuExemplu=false.",
+  "comenzi": {
+    "_nota": "Comenzi online. 'activ': false = coșul apare doar pe demo.html. Cu 'activ': true apare și pe index.html și meniu.html. Prețurile din 'grupuri' sunt EXEMPLE până le confirmă localul ('exemple': false după confirmare).",
+    "activ": false,
+    "exemple": true,
+    "supabaseUrl": "",
+    "supabaseCheie": "",
+    "_supabase": "Gol = mod demonstrație: comenzile rămân în browser și se văd în panou.html din același browser. Cheia e cea publică (anon), niciodată service_role.",
+    "ridicare": {
+      "minute": 20
+    },
+    "livrare": {
+      "activ": true,
+      "taxa": 5,
+      "minim": 30,
+      "minute": 40,
+      "zona": "Dorohoi"
+    },
+    "grupuri": {
+      "marime": {
+        "titlu": "Mărime",
+        "tip": "una",
+        "variante": [
+          {
+            "nume": "33 cm",
+            "pret": 0
+          },
+          {
+            "nume": "50 cm",
+            "pret": 22
+          }
+        ]
+      },
+      "meniu": {
+        "titlu": "Fă-l meniu",
+        "tip": "multe",
+        "variante": [
+          {
+            "nume": "Suc la doză",
+            "pret": 6
+          }
+        ]
+      },
+      "extra": {
+        "titlu": "Extra",
+        "tip": "multe",
+        "variante": [
+          {
+            "nume": "Sos extra",
+            "pret": 3
+          },
+          {
+            "nume": "Cașcaval extra",
+            "pret": 5
+          }
+        ]
+      },
+      "fara": {
+        "titlu": "Fără",
+        "tip": "multe",
+        "variante": [
+          {
+            "nume": "fără ceapă",
+            "pret": 0
+          },
+          {
+            "nume": "fără sos",
+            "pret": 0
+          }
+        ]
+      }
+    },
+    "categorii": {
+      "pizza": [
+        "marime",
+        "extra"
+      ],
+      "burgeri": [
+        "meniu",
+        "extra",
+        "fara"
+      ],
+      "preparate": [
+        "meniu",
+        "extra",
+        "fara"
+      ],
+      "turte": [
+        "extra"
+      ]
+    }
+  }
 }
