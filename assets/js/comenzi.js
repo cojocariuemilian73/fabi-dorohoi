@@ -191,7 +191,7 @@
         el("div", { class: "cart-total" }, el("dt", { text: "Total" }), el("dd", { text: lei(sub + fee) }))),
       short ? el("p", { class: "order-note", text: `Livrarea pornește de la ${lei(C.livrare.minim)}. Mai adaugă ${lei(short)}.` }) : null,
       !state.open ? el("p", { class: "order-note is-closed", text: `Acum suntem închiși. Comanda o pregătim ${state.next}.` }) : null,
-      el("p", { class: "cart-meta", text: (mode === "masa" ? "Plătești la masă." : "Plătești la primire, cash sau card.") + (eta && state.open ? ` Gata în aproximativ ${eta} de minute de la confirmare.` : "") }),
+      el("p", { class: "cart-meta", text: (mode === "masa" ? "Plătești la masă." : (C.plata || "Plătești la primire.")) + (eta && state.open ? ` Gata în aproximativ ${eta} de minute de la confirmare.` : "") }),
       message ? el("p", { class: "order-error", role: "alert", text: message }) : null,
       el("button", { class: "button button-dark cart-send", disabled: Boolean(short) }, `Trimite comanda · ${lei(sub + fee)}`),
       !live && !C.prezentare ? el("p", { class: "order-note", text: "Mod demonstrație: comanda nu pleacă la local. O vezi în panou.html, în acest browser." }) : null,

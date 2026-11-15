@@ -525,6 +525,7 @@ def order_config():
         "supabaseUrl": ORDERS.get("supabaseUrl", ""),
         "supabaseCheie": ORDERS.get("supabaseCheie", ""),
         "prezentare": ORDERS.get("prezentare", False),
+        "plata": ORDERS.get("plata", ""),
     })
 
 
